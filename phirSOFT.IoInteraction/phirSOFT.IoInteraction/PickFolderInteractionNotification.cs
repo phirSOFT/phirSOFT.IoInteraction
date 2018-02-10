@@ -4,6 +4,5 @@ namespace phirSOFT.IoInteraction
 {
     public class PickFolderInteractionNotification : Confirmation
     {
-
     }
 }

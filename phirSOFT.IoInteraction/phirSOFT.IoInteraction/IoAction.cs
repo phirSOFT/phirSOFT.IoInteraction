@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Prism.Interactivity.InteractionRequest;
 using System.Windows;
 using System.Windows.Interactivity;
 using Microsoft.Win32;
+using Prism.Interactivity.InteractionRequest;
 
 namespace phirSOFT.IoInteraction
 {
@@ -21,13 +21,6 @@ namespace phirSOFT.IoInteraction
         public static readonly DependencyProperty DefaultExtensionProperty = DependencyProperty.Register(
             "DefaultExtension", typeof(string), typeof(IoAction), new PropertyMetadata(string.Empty));
 
-        public string DefaultExtension
-        {
-            get => (string) GetValue(DefaultExtensionProperty);
-            set => SetValue(DefaultExtensionProperty, value);
-        }   
-        public Collection<FileDialogCustomPlace> CustomPlaces { get; } = new Collection<FileDialogCustomPlace>();
-
         public static readonly DependencyProperty DereferenceLinksProperty = DependencyProperty.Register(
             "DereferenceLinks", typeof(bool), typeof(IoAction), new PropertyMetadata(true));
 
@@ -39,6 +32,14 @@ namespace phirSOFT.IoInteraction
 
         public static readonly DependencyProperty OverwritePromptProperty = DependencyProperty.Register(
             "OverwritePrompt", typeof(bool), typeof(IoAction), new PropertyMetadata(default(bool)));
+
+        public string DefaultExtension
+        {
+            get => (string) GetValue(DefaultExtensionProperty);
+            set => SetValue(DefaultExtensionProperty, value);
+        }
+
+        public Collection<FileDialogCustomPlace> CustomPlaces { get; } = new Collection<FileDialogCustomPlace>();
 
         public bool OverwritePrompt
         {
@@ -62,7 +63,7 @@ namespace phirSOFT.IoInteraction
         {
             get => (bool) GetValue(DereferenceLinksProperty);
             set => SetValue(DereferenceLinksProperty, value);
-        }   
+        }
 
         public bool CheckPathExists
         {
@@ -92,7 +93,7 @@ namespace phirSOFT.IoInteraction
             switch (args.Context)
             {
                 case OpenFileInteractionNotification ofn:
-                    dialog = new OpenFileDialog()
+                    dialog = new OpenFileDialog
                     {
                         AddExtension = AddExtension,
                         CheckFileExists = CheckFileExists,
@@ -120,7 +121,7 @@ namespace phirSOFT.IoInteraction
                     break;
                 case SaveFileInteractionNotification sfn:
 
-                    dialog = new SaveFileDialog()
+                    dialog = new SaveFileDialog
                     {
                         AddExtension = AddExtension,
                         CheckFileExists = CheckFileExists,
@@ -140,7 +141,7 @@ namespace phirSOFT.IoInteraction
 
                     Task.Run(() =>
                     {
-                        sfn.Confirmed = (bool)dialog.ShowDialog(Window.GetWindow(AssociatedObject));
+                        sfn.Confirmed = (bool) dialog.ShowDialog(Window.GetWindow(AssociatedObject));
                         if (sfn.Confirmed)
                             sfn.FileName = dialog.FileName;
                         args.Callback?.Invoke();

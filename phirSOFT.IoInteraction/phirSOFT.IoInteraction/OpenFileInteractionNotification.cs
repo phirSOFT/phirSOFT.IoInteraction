@@ -1,5 +1,4 @@
-﻿using System;
-using Prism.Interactivity.InteractionRequest;
+﻿using Prism.Interactivity.InteractionRequest;
 
 namespace phirSOFT.IoInteraction
 {
@@ -11,7 +10,5 @@ namespace phirSOFT.IoInteraction
         public int FilterIndex { get; internal set; }
         public string InitialDirectory { get; internal set; }
         public bool Multiselect { get; internal set; }
-
-
     }
 }
