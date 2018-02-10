@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/phirSOFT/phirSOFT.IoInteraction</projectUrl>
+    <licenseUrl>https://github.com/phirSOFT/phirSOFT.IoInteraction/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2018</copyright>
+  </metadata>
+</package>
