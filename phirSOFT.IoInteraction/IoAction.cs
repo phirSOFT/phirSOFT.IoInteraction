@@ -35,7 +35,7 @@ namespace phirSOFT.IoInteraction
 
         public string DefaultExtension
         {
-            get => (string) GetValue(DefaultExtensionProperty);
+            get => (string)GetValue(DefaultExtensionProperty);
             set => SetValue(DefaultExtensionProperty, value);
         }
 
@@ -43,43 +43,43 @@ namespace phirSOFT.IoInteraction
 
         public bool OverwritePrompt
         {
-            get => (bool) GetValue(OverwritePromptProperty);
+            get => (bool)GetValue(OverwritePromptProperty);
             set => SetValue(OverwritePromptProperty, value);
         }
 
         public bool CreatePrompt
         {
-            get => (bool) GetValue(CreatePromptProperty);
+            get => (bool)GetValue(CreatePromptProperty);
             set => SetValue(CreatePromptProperty, value);
         }
 
         public bool ValidateNames
         {
-            get => (bool) GetValue(ValidateNamesProperty);
+            get => (bool)GetValue(ValidateNamesProperty);
             set => SetValue(ValidateNamesProperty, value);
         }
 
         public bool DereferenceLinks
         {
-            get => (bool) GetValue(DereferenceLinksProperty);
+            get => (bool)GetValue(DereferenceLinksProperty);
             set => SetValue(DereferenceLinksProperty, value);
         }
 
         public bool CheckPathExists
         {
-            get => (bool) GetValue(CheckPathExistsProperty);
+            get => (bool)GetValue(CheckPathExistsProperty);
             set => SetValue(CheckPathExistsProperty, value);
         }
 
         public bool CheckFileExists
         {
-            get => (bool) GetValue(CheckFileExistsProperty);
+            get => (bool)GetValue(CheckFileExistsProperty);
             set => SetValue(CheckFileExistsProperty, value);
         }
 
         public bool AddExtension
         {
-            get => (bool) GetValue(AddExtensionProperty);
+            get => (bool)GetValue(AddExtensionProperty);
             set => SetValue(AddExtensionProperty, value);
         }
 
@@ -110,13 +110,10 @@ namespace phirSOFT.IoInteraction
                         ValidateNames = ValidateNames
                     };
 
-                    Task.Run(() =>
-                    {
-                        ofn.Confirmed = dialog.ShowDialog() ?? false;
-                        if (ofn.Confirmed)
-                            ofn.FileNames = dialog.FileNames;
-                        args.Callback?.Invoke();
-                    });
+                    ofn.Confirmed = dialog.ShowDialog() ?? false;
+                    if (ofn.Confirmed)
+                        ofn.FileNames = dialog.FileNames;
+                    args.Callback?.Invoke();
 
                     break;
                 case SaveFileInteractionNotification sfn:
@@ -140,13 +137,12 @@ namespace phirSOFT.IoInteraction
                     };
 
 
-                    Task.Run(() =>
-                    {
-                        sfn.Confirmed = dialog.ShowDialog() ?? false;
-                        if (sfn.Confirmed)
-                            sfn.FileName = dialog.FileName;
-                        args.Callback?.Invoke();
-                    });
+
+                    sfn.Confirmed = dialog.ShowDialog() ?? false;
+                    if (sfn.Confirmed)
+                        sfn.FileName = dialog.FileName;
+                    args.Callback?.Invoke();
+
 
                     break;
                 default:
