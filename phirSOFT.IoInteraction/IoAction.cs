@@ -112,7 +112,7 @@ namespace phirSOFT.IoInteraction
 
                     Task.Run(() =>
                     {
-                        ofn.Confirmed = (bool) dialog.ShowDialog(Window.GetWindow(AssociatedObject));
+                        ofn.Confirmed = dialog.ShowDialog() ?? false;
                         if (ofn.Confirmed)
                             ofn.FileNames = dialog.FileNames;
                         args.Callback?.Invoke();
@@ -139,9 +139,10 @@ namespace phirSOFT.IoInteraction
                         ValidateNames = ValidateNames
                     };
 
+
                     Task.Run(() =>
                     {
-                        sfn.Confirmed = (bool) dialog.ShowDialog(Window.GetWindow(AssociatedObject));
+                        sfn.Confirmed = dialog.ShowDialog() ?? false;
                         if (sfn.Confirmed)
                             sfn.FileName = dialog.FileName;
                         args.Callback?.Invoke();
